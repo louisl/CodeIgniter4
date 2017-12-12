@@ -33,9 +33,9 @@ services:
 script:
   - php vendor/bin/phpunit -v
   # Check files match the standard.
-  - ./vendor/bin/phpcs ./public --standard=./vendor/codeigniter4/codeigniter4-standard/Codeigniter4/ruleset.xml
-  - ./vendor/bin/phpcs ./application --standard=./vendor/codeigniter4/codeigniter4-standard/Codeigniter4/ruleset.xml
-  - ./vendor/bin/phpcs ./system --standard=./vendor/codeigniter4/codeigniter4-standard/Codeigniter4/ruleset.xml
+  - ./vendor/bin/phpcs ./public --standard=./vendor/codeigniter4/codeigniter4-standard/CodeIgniter4/ruleset.xml
+  - ./vendor/bin/phpcs ./application --standard=./vendor/codeigniter4/codeigniter4-standard/CodeIgniter4/ruleset.xml
+  - ./vendor/bin/phpcs ./system --standard=./vendor/codeigniter4/codeigniter4-standard/CodeIgniter4/ruleset.xml
 
 before_install:
   - mysql -e "CREATE DATABASE IF NOT EXISTS test;" -uroot;
