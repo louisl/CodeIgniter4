@@ -1,10 +1,10 @@
 language: php
 
 php:
-  - 7
-  - 7.1
+  # - 7
+  # - 7.1
   - 7.2
-  - nightly
+  # - nightly
 
 matrix:
   fast_finish: true
@@ -44,7 +44,9 @@ before_install:
 
 install:
   # Install the other composer deps.
+  - composer require squizlabs/php_codesniffer --dev
   - composer require codeigniter4/codeigniter4-standard --dev
+  
 
 before_script:
   - echo 'extension = memcached.so' >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
