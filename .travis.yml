@@ -32,11 +32,19 @@ services:
 
 script:
   - php vendor/bin/phpunit -v
+  # Check files match the standard.
+  - ./vendor/bin/phpcs ./public --standard=./vendor/codeigniter4/codeigniter4-standard/Codeigniter4/ruleset.xml
+  - ./vendor/bin/phpcs ./application --standard=./vendor/codeigniter4/codeigniter4-standard/Codeigniter4/ruleset.xml
+  - ./vendor/bin/phpcs ./system --standard=./vendor/codeigniter4/codeigniter4-standard/Codeigniter4/ruleset.xml
 
 before_install:
   - mysql -e "CREATE DATABASE IF NOT EXISTS test;" -uroot;
   - mysql -e "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'test';" -uroot
   - psql -c 'CREATE DATABASE test;' -U postgres
+
+install:
+  # Install the other composer deps.
+  - composer require codeigniter4/codeigniter4-standard --dev
 
 before_script:
   - echo 'extension = memcached.so' >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
